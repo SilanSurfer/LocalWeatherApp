@@ -3,6 +3,10 @@ function printPosition(latitude, longitude) {
   document.getElementById("longitude").innerHTML = "Longitude: " + longitude;
 }
 
+function getAddressFromResponse(json) {
+  return JSON.stringify(json.results[0].formatted_address);
+}
+
 function reverseGeocoding(latitude, longitude) {
   $.ajax({
     url : "https://maps.googleapis.com/maps/api/geocode/json?",
@@ -11,9 +15,10 @@ function reverseGeocoding(latitude, longitude) {
       key : "AIzaSyCJLV016miHea8D-San-3o_n5y2d0KculI"
     },
     success : function(json) {
-      console.log(JSON.stringify(json));
+      document.getElementById("address").innerHTML = getAddressFromResponse(json);
     },
     error : function(status) {
+      document.getElementById("address").innerHTML = "Couldn't get location!";
       console.log(status);
     }
   });
