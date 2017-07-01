@@ -1,3 +1,21 @@
+var weatherIconToImageDict = {
+  "clear-day" : "../assets/clear-day.jpg",
+  "clear-night" : "../assets/clear-sky-night.jpg",
+  "rain" : "../assets/rain.jpg",
+  "snow" : "../assets/snow.jpg",
+  "sleet" : "../assets/sleet.jpg",
+  "wind" : "../assets/wind.jpg",
+  "fog" : "../assets/fog.jpg",
+  "cloudy" : "../assets/cloudy.jpg",
+  "partly-cloudy-day" : "../assets/dupa.jpg",
+  "partly-cloudy-night" : "../assets/partly-cloudy-night.jpg"
+};
+
+function setBackgroundImage(weatherType) {
+    var weatherImageUrl = "url(" + weatherIconToImageDict[weatherType] + ")";
+    $('body').css('background-image', weatherImageUrl);
+}
+
 function printPosition(latitude, longitude) {
   document.getElementById("latitude").innerHTML = "Latitude: " + latitude;
   document.getElementById("longitude").innerHTML = "Longitude: " + longitude;
@@ -28,8 +46,7 @@ function getAddressFromPosition(latitude, longitude, lang = "en") {
 function getAndInsertWeatherData(json) {
   document.getElementById("summary").innerHTML = json.currently.summary;
   document.getElementById("current_temp").innerHTML = json.currently.temperature;
-  document.getElementById("icon").innerHTML = json.currently.icon;
-
+  //document.getElementById("icon").innerHTML = json.currently.icon;
 }
 
 function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
@@ -52,6 +69,7 @@ function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
     function(data) {
       console.log(JSON.stringify(data));
       getAndInsertWeatherData(data);
+      setBackgroundImage(data.currently.icon);
     },
     "jsonp");
 }
