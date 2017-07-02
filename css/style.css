@@ -1,17 +1,22 @@
+body {
+    font-family: 'Bellefair', serif;
+    color: #333A56;
+}
+
 .flex-container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding: 10px;
+    padding-top: 120px;
 }
 
 .flex-item {
     text-align: center;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #F7F5E6;
 }
 
-#titleContainer {
-    padding-top: 60px;
+#forecastContainer {
+    font-size: 20px;
 }
