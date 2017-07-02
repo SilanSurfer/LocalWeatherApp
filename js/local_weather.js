@@ -16,11 +16,6 @@ function setBackgroundImage(weatherType) {
     $('body').css('background-image', weatherImageUrl);
 }
 
-function printPosition(latitude, longitude) {
-  document.getElementById("latitude").innerHTML = "Latitude: " + latitude;
-  document.getElementById("longitude").innerHTML = "Longitude: " + longitude;
-}
-
 function getAddressFromResponse(json) {
   return json.results[0].formatted_address;
 }
@@ -79,7 +74,6 @@ function getLocation(lang = "eng") {
     navigator.geolocation.getCurrentPosition(function(position) {
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
-      printPosition(latitude, longitude);
       getAddressFromPosition(latitude, longitude, lang);
       getWeatherForecast(latitude, longitude, "si", lang);
     });
