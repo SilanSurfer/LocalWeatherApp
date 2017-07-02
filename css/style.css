@@ -1,9 +1,9 @@
 .flex-container {
-    padding-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    padding: 10px;
 }
 
 .flex-item {
@@ -12,7 +12,6 @@
     background-color: #ffffff;
 }
 
-.button {
-    width: 40px;
-    height: 40px;
+#titleContainer {
+    padding-top: 60px;
 }
