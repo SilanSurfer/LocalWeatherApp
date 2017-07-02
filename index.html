@@ -9,10 +9,19 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <p id="latitude"></p> 
-    <p id="longitude"></p>
-    <p id="address"></p>
-    <p id="current_temp"></p>
-    <p id="summary"></p>
+    <div class="flex-container">
+      <header class="header">Weather forecast</header>
+    </div>
+    <div class="flex-container">
+      <div class="flex-item" id="temperatureBox">
+        <p id="current_temp"></p>
+      </div>
+      <div class="flex-item" id="summaryBox">
+        <p id="summary"></p>
+      </div>
+      <div class="flex-item" id="forecastBox">
+        <p id="address"></p>
+      </div>
+    </div>
   </body>
 </html>

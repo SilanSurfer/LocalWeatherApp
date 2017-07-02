@@ -1,0 +1,18 @@
+.flex-container {
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.flex-item {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.button {
+    width: 40px;
+    height: 40px;
+}
