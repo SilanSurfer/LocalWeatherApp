@@ -11,6 +11,24 @@ var weatherIconToImageDict = {
   "partly-cloudy-night" : "../assets/partly-cloudy-night.jpg"
 };
 
+function setButtonText(units) {
+  if (units === "si") {
+    document.getElementById("tempUnitButton").innerText = "°C";
+  }
+  else if(units === "us") {
+    document.getElementById("tempUnitButton").innerText = "F";
+  }
+}
+
+function changeTempUnits() {
+  if (document.getElementById("tempUnitButton").innerText === "F") {
+    getLocation("eng", "si");
+  }
+  else {
+    getLocation("eng", "us");
+  }
+}
+
 function setBackgroundImage(weatherType) {
     var weatherImageUrl = "url(" + weatherIconToImageDict[weatherType] + ")";
     $('body').css('background-image', weatherImageUrl);
@@ -41,7 +59,6 @@ function getAddressFromPosition(latitude, longitude, lang = "en") {
 function getAndInsertWeatherData(json) {
   document.getElementById("summary").innerHTML = json.currently.summary;
   document.getElementById("current_temp").innerHTML = json.currently.temperature;
-  //document.getElementById("icon").innerHTML = json.currently.icon;
 }
 
 function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
@@ -62,20 +79,20 @@ function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
           "&" + requestedUnits +
           "&" + language,
     function(data) {
-      console.log(JSON.stringify(data));
       getAndInsertWeatherData(data);
       setBackgroundImage(data.currently.icon);
     },
     "jsonp");
 }
 
-function getLocation(lang = "eng") {
+function getLocation(lang = "eng", units = "us") {
+  setButtonText(units);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
       getAddressFromPosition(latitude, longitude, lang);
-      getWeatherForecast(latitude, longitude, "si", lang);
+      getWeatherForecast(latitude, longitude, units, lang);
     });
   }
   else {
@@ -84,5 +101,5 @@ function getLocation(lang = "eng") {
 }
 
 $(document).ready(function () {
-  getLocation();
+  getLocation("eng", "us");
 });
