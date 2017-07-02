@@ -74,17 +74,21 @@ function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
     "jsonp");
 }
 
-function getLocation() {
+function getLocation(lang = "eng") {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
       printPosition(latitude, longitude);
-      getAddressFromPosition(latitude, longitude, "pl");
-      getWeatherForecast(latitude, longitude, "si", "pl");
+      getAddressFromPosition(latitude, longitude, lang);
+      getWeatherForecast(latitude, longitude, "si", lang);
     });
   }
   else {
     console.log("Couldn't get geolocation");
   }
 }
+
+$(document).ready(function () {
+  getLocation();
+});
