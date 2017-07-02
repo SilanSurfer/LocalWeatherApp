@@ -7,7 +7,7 @@ var weatherIconToImageDict = {
   "wind" : "../assets/wind.jpg",
   "fog" : "../assets/fog.jpg",
   "cloudy" : "../assets/cloudy.jpg",
-  "partly-cloudy-day" : "../assets/dupa.jpg",
+  "partly-cloudy-day" : "../assets/partly-cloudy-day.jpg",
   "partly-cloudy-night" : "../assets/partly-cloudy-night.jpg"
 };
 
