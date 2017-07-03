@@ -11,18 +11,18 @@
   </head>
   <body>
     <div class="flex-container" id="forecastContainer">
-      <div class="flex-item" id="temperatureBox">
-        <p id="current_temp"></p>
+      <div class="flex-item">
+        <p>
+          <span id="current_temp"></span>
+          <span><button onclick="changeTempUnits()" id="tempUnitButton"></button></span>
+        </p>
       </div>
-      <div class="flex-item" id="summaryBox">
+      <div class="flex-item">
         <p id="summary"></p>
       </div>
-      <div class="flex-item" id="forecastBox">
+      <div class="flex-item">
         <p id="address"></p>
       </div>
-    </div>
-    <div class="flex-container" id="buttonContainer">
-      <button onclick="changeTempUnits()" id="tempUnitButton"></button>
     </div>
   </body>
 </html>
