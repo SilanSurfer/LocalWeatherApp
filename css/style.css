@@ -9,6 +9,7 @@ body {
     justify-content: center;
     flex-direction: row;
     padding-top: 120px;
+    font-size: 20px;
 }
 
 .flex-item {
@@ -17,6 +18,8 @@ body {
     background-color: #F7F5E6;
 }
 
-#forecastContainer {
-    font-size: 20px;
+.button {
+    font-family: 'Bellefair', serif !important;
+    color: #333A56 !important;
+    font-size: 20px !important;
 }
