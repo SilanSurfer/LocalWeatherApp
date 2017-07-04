@@ -1,14 +1,14 @@
 var weatherIconToImageDict = {
-  "clear-day" : "../assets/clear-day.jpg",
-  "clear-night" : "../assets/clear-sky-night.jpg",
-  "rain" : "../assets/rain.jpg",
-  "snow" : "../assets/snow.jpg",
-  "sleet" : "../assets/sleet.jpg",
-  "wind" : "../assets/wind.jpg",
-  "fog" : "../assets/fog.jpg",
-  "cloudy" : "../assets/cloudy.jpg",
-  "partly-cloudy-day" : "../assets/partly-cloudy-day.jpg",
-  "partly-cloudy-night" : "../assets/partly-cloudy-night.jpg"
+  "clear-day" : "https://image.flaticon.com/icons/svg/136/136581.svg",
+  "clear-night" : "https://image.flaticon.com/icons/svg/414/414891.svg",
+  "rain" : "https://image.flaticon.com/icons/svg/131/131041.svg",
+  "snow" : "https://image.flaticon.com/icons/svg/110/110315.svg",
+  "sleet" : "https://image.flaticon.com/icons/svg/1/1756.svg",
+  "wind" : "https://image.flaticon.com/icons/svg/439/439471.svg",
+  "fog" : "https://image.flaticon.com/icons/svg/182/182264.svg",
+  "cloudy" : "https://image.flaticon.com/icons/svg/131/131043.svg",
+  "partly-cloudy-day" : "https://image.flaticon.com/icons/svg/474/474807.svg",
+  "partly-cloudy-night" : "https://image.flaticon.com/icons/svg/15/15781.svg"
 };
 
 function setButtonText(units) {
@@ -30,8 +30,8 @@ function changeTempUnits() {
 }
 
 function setBackgroundImage(weatherType) {
-    var weatherImageUrl = "url(" + weatherIconToImageDict[weatherType] + ")";
-    $('body').css('background-image', weatherImageUrl);
+    var weatherImageUrl = weatherIconToImageDict[weatherType];
+    document.getElementById("weather_icon").setAttribute("src", weatherImageUrl);
 }
 
 function getAddressFromResponse(json) {
@@ -99,7 +99,6 @@ function getLocation(lang = "eng", units = "us") {
     console.log("Couldn't get geolocation");
   }
 }
-
 $(document).ready(function () {
   getLocation("eng", "us");
 });

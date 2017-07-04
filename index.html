@@ -10,18 +10,15 @@
     <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
   </head>
   <body>
-    <div class="flex-container" id="forecastContainer">
-      <div class="flex-item">
-        <p>
+    <div class="card_container">
+      <div class="header" id="address"></div>
+      <div class="main_container">
+        <img id="weather_icon" alt="weather icon"/>
+        <div class="description" id="summary"></div>
+        <div class="temperature">
           <span id="current_temp"></span>
           <span><button onclick="changeTempUnits()" id="tempUnitButton"></button></span>
-        </p>
-      </div>
-      <div class="flex-item">
-        <p id="summary"></p>
-      </div>
-      <div class="flex-item">
-        <p id="address"></p>
+        </div>
       </div>
     </div>
   </body>
