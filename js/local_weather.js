@@ -11,7 +11,12 @@ var weatherIconToImageDict = {
   "partly-cloudy-night" : "https://image.flaticon.com/icons/svg/15/15781.svg"
 };
 
-function setButtonText(units) {
+var celcius = "https://image.flaticon.com/icons/svg/176/176003.svg";
+var fahrenheit = "https://image.flaticon.com/icons/svg/176/176004.svg";
+var currentUnit = "us";
+var currentLang = "en";
+
+function setTempButtonText(units) {
   if (units === "si") {
     document.getElementById("tempUnitButton").innerText = "°C";
   }
@@ -20,12 +25,29 @@ function setButtonText(units) {
   }
 }
 
-function changeTempUnits() {
-  if (document.getElementById("tempUnitButton").innerText === "F") {
-    getLocation("eng", "si");
+function setLangButtonText(lang) {
+    if (lang === "pl") {
+    document.getElementById("languageButton").innerText = "PL";
+  }
+  else if(lang === "en") {
+    document.getElementById("languageButton").innerText = "EN";
+  }
+}
+function changeLanguage() {
+  if (currentLang === "en")
+  {
+    getLocation("pl", currentUnit);
   }
   else {
-    getLocation("eng", "us");
+    getLocation("en", currentUnit);
+  }
+}
+function changeTempUnits() {
+  if (currentUnit === "us") {
+    getLocation(currentLang, "si");
+  }
+  else {
+    getLocation(currentLang, "us");
   }
 }
 
@@ -62,12 +84,6 @@ function getAndInsertWeatherData(json) {
 }
 
 function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
-  if(units !== "us" && units !== "si") {
-    units = "us";
-  }
-  if (lang !== "en" && lang !== "pl") {
-    lang = "en";
-  }
   var requestedUnits = "units=" + units;
   var language = "lang=" + lang;
   var key = "e927a55a30254634ab211512c50acda7";
@@ -85,8 +101,15 @@ function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
     "jsonp");
 }
 
-function getLocation(lang = "eng", units = "us") {
-  setButtonText(units);
+function getLocation(lang = "en", units = "us") {
+  if (currentUnit !== units) {
+    currentUnit = units;
+  }
+  if (currentLang !== lang) {
+    currentLang = lang;
+  }
+  setTempButtonText(units);
+  setLangButtonText(lang);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var latitude = position.coords.latitude;
@@ -100,5 +123,5 @@ function getLocation(lang = "eng", units = "us") {
   }
 }
 $(document).ready(function () {
-  getLocation("eng", "us");
+  getLocation("en", "us");
 });
