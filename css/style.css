@@ -40,8 +40,6 @@ body {
     color: #FFFFFF;
     background-color: #1A2930;
     text-align: center;
-    font-size: 25px;
-    font-weight: 500;
     padding: 5px 10px;
     border-bottom: 2px solid #1A2930;
 }
@@ -61,4 +59,14 @@ body {
 #weather_icon {
     width: 200px;
     height: 80px;
+}
+
+.myButton {
+    background-color: #F7CE3E;
+    color: #000000;
+    display: inline-block;
+    padding: 1px 10px;
+    font-size: 20px;
+    font-weight: 300;
+    text-decoration:none;
 }

@@ -16,6 +16,11 @@ var fahrenheit = "https://image.flaticon.com/icons/svg/176/176004.svg";
 var currentUnit = "us";
 var currentLang = "en";
 
+function setEventsOnButtons() {
+  document.getElementById("tempUnitButton").addEventListener("click", changeTempUnits);
+  document.getElementById("languageButton").addEventListener("click", changeLanguage);
+}
+
 function setTempButtonText(units) {
   if (units === "si") {
     document.getElementById("tempUnitButton").innerText = "°C";
@@ -123,5 +128,6 @@ function getLocation(lang = "en", units = "us") {
   }
 }
 $(document).ready(function () {
+  setEventsOnButtons();
   getLocation("en", "us");
 });
