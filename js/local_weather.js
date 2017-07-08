@@ -84,8 +84,17 @@ function getAddressFromPosition(latitude, longitude, lang = "en") {
 }
 
 function getAndInsertWeatherData(json) {
+  var displayedUnit = "";
+  if (currentUnit === "us") {
+    displayedUnit = "F";
+  }
+  else {
+    displayedUnit = "°C";
+  }
+
   document.getElementById("summary").innerHTML = json.currently.summary;
-  document.getElementById("current_temp").innerHTML = json.currently.temperature;
+  document.getElementById("current_temp").innerHTML = json.currently.temperature + 
+                                                      " " + displayedUnit;
 }
 
 function getWeatherForecast(latitude, longitude, units = "us", lang = "en") {
